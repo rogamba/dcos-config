@@ -1,0 +1,38 @@
+{
+  "id": "/dcos-ui",
+  "cmd": null,
+  "cpus": 0.2,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "rogamba/dcos-ui",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp",
+          "name": "dcos-ui",
+          "labels": {
+            "VIP_0": "dcos-ui:80"
+          }
+        }
+      ],
+      "privileged": false,
+      "forcePullImage": false
+    }
+  },
+  "labels": {
+    "type": "app"
+  },
+  "env": {
+    "PORT": "80"
+  }
+}

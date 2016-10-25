@@ -1,0 +1,40 @@
+{
+  "id": "dcos-mysql",
+  "cmd": null,
+  "cpus": 0.5,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "docker": {
+      "network": "BRIDGE",
+      "image": "mysql:5",
+      "portMappings": [
+        {
+          "containerPort": 3306,
+          "hostPort" : 0,
+          "protocol": "tcp",
+          "name": "dcos-mysql",
+          "labels": {
+            "VIP_0": "dcos-mysql:3306"
+          }
+        }
+      ],
+      "parameters": [
+          {
+            "key": "add-host",
+            "value": "dcos-mysql:2.1.1.1"
+          },
+      ]
+    },
+    "type": "DOCKER",
+    "volumes": []
+  },
+  "env": {
+      "MYSQL_ROOT_PASSWORD" : "ByPrice123!"
+  },
+  "labels": {
+    "type": "db"
+  },
+  "healthChecks": []
+}

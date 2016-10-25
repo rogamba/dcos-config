@@ -1,0 +1,35 @@
+{
+  "id": "/dcos-api",
+  "cmd": null,
+  "cpus": 0.2,
+  "mem": 128,
+  "disk": 0,
+  "instances": 2,
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "rogamba/dcos-api",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 0,
+          "protocol": "tcp",
+          "name": "dcos-api",
+          "labels": {
+            "VIP_0": "dcos-api:8000"
+          }
+        }
+      ],
+      "privileged": false,
+      "forcePullImage": false
+    }
+  },
+  "labels": {
+    "type": "app"
+  }
+}

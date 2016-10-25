@@ -1,0 +1,22 @@
+List of services and Virtual IPs
+
+# Se pueden usar el servicio de dns que viene incluido en marathon como
+# service discovery, refiriendo a los servicos como <name>.marathon.mesos
+
+API Gateway
+    dcos-nginx      1.1.1.1
+
+Datastores
+    dcos-mysql      2.1.1.1
+
+Applications
+    dcos-ui         3.1.1.1
+    dcos-api        3.1.2.1
+
+Frontend
+    dcos-ui         4.1.1.1
+
+
+
+Service Address Port Definition
+Apps                5000

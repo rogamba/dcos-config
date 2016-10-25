@@ -1,0 +1,22 @@
+{
+    "id": "/gateway",
+    "instances": 1,
+    "mem": 128,
+    "cpus": 0.1,
+    "acceptedResourceRoles": [
+        "slave_public"
+    ],
+    "constraints": [["hostname", "UNIQUE"]],
+    "container": {
+        "docker": {
+            "image": "rogamba/dcos-nginx-remote",
+            "network": "HOST",
+            "portMappings" : [
+                { "containerPort" : 80, "hostPort" : 80 }
+            ],
+            "forcePullImage": true
+        },
+        "type": "DOCKER"
+    },
+    "requirePorts": true
+}

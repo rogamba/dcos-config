@@ -1,0 +1,45 @@
+{
+    "id" : "/mysql-test",
+    "cmd" : null,
+    "cpus" : 1,
+    "mem" : 1024,
+    "disk" : 0,
+    "instances" : 0,
+    "container" : {
+        "type" : "DOCKER",
+        "volumes" : [
+            {
+                "containerPath" : "/var/lib/mysql",
+                "mode" : "RW",
+                "external" : {
+                    "name" : "mysqldemovolume",
+                    "provider" : "dvdi",
+                    "options" : {
+                        "dvdi/driver" : "rexray"
+                    }
+                }
+            }
+        ],
+        "docker" : {
+            "image" : "mysql:5.7.12",
+            "network" : "BRIDGE",
+            "portMapping" : [
+                {
+                    "containerPort": 3306,
+                    "hostPort" : 3306,
+                    "servicePort" : 10002,
+                    "protocol" : "tcp",
+                    "labels" : {}
+                }
+            ],
+            "privileged" : false,
+            "parameters" : [],
+            "forcePullImage" : true
+        }
+    },
+    "env" : {
+        "MYSQL_ROOT_PASSWORD" : "ByPrice123!",
+        "MYSQL_DATABASE" : "dcos",
+        "MYSQL_CONTEXT" : "/service/mysql"
+    }
+}
